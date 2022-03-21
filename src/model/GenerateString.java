@@ -32,6 +32,6 @@ public class GenerateString {
 
     public String generate(){
         int i = 5;
-        return getRandomString(i);
+        return "student_"+getRandomString(i);
     }
 }
