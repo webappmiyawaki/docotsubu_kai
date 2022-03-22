@@ -1,9 +1,9 @@
-package model;
+package model.generator;
 
 import java.nio.charset.Charset;
 import java.util.Random;
 
-public class GenerateString {
+public class GeneratePassword {
     public String getRandomString(int i){
     	byte[] bytearray = new byte[256];
         String mystring;
@@ -31,7 +31,7 @@ public class GenerateString {
     }
 
     public String generate(){
-        int i = 5;
-        return "student_"+getRandomString(i);
+        int i = 4;
+        return getRandomString(i);
     }
 }

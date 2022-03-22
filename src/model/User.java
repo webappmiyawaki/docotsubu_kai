@@ -12,5 +12,8 @@ import lombok.NoArgsConstructor;
 public class User implements Serializable {
 	private String name;
 	private String pass;
-
+	@Override
+	public String toString() {
+		return String.format("name:%s pass:%",this.name,this.pass);
+	}
 }
