@@ -1,25 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.generator.GenerateString" %>
 <%@ page import="model.generator.GeneratePassword" %>
 <%@page import="model.RegistorUserList"%>
 <%@page import="java.util.*" %>
-<%@page import="model.User"%>
 <%
 RegistorUserList rul = (RegistorUserList) application.getAttribute("rul");
 %>
+<%@page import="model.User"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>どこつぶ</title>
+<title>ユーザー登録</title>
 </head>
 <body>
-<div class="logo">
-	<img src="img/index_welcome_balloon.png" width="400">
-	<h1>どこつぶへようこそ</h1>
-</div>
+
 <%
 GenerateString generateString = new GenerateString();
 String gname = generateString.generate();
@@ -27,16 +23,15 @@ GeneratePassword generatePassword = new GeneratePassword();
 String gpass = generatePassword.generate();
 %>
 
-初回起動時は新規登録しか表示されない。
-<form action="RegisterUser" method="get">
-	<button type='submit' name='action'>新規登録</button>
-</form>
+<p>入力が面倒くさいので自動で初期値出力</p>
+<p>name:<%= gname %><br>
+pass:<%= gpass %></p>
 <br>
-<% if(rul!=null){ %>
-<form action="Login" method="post">
-ユーザー名：<input type="text" name="name"><br>
-パスワード：<input type="password" name="pass"><br>
-<input type="submit" value="ログイン">
+<form action="/docotsubu_kai/VerifyUser" method="get">
+ユーザー名：<input type="text" name="name" value="<%= gname %>"><br>
+パスワード：<input type="password" name="pass" value="<%= gpass %>"><br>
+<br>
+<input type="submit" value="新規登録">
 </form>
 <br>
 <br>
@@ -50,7 +45,7 @@ user:<%= rUser.getName() %> pass:<%= rUser.getPass() %><br>
 <%
 	}
 }
-} %>
+%>
 
 </body>
 </html>
