@@ -3,7 +3,7 @@ package model.generator;
 import java.nio.charset.Charset;
 import java.util.Random;
 
-public class GeneratePassword {
+public class Generator {
     public String getRandomString(int i){
     	byte[] bytearray = new byte[256];
         String mystring;
@@ -30,8 +30,13 @@ public class GeneratePassword {
         return thebuffer.toString();
     }
 
-    public String generate(){
+    public String generatePassword(){
         int i = 4;
         return getRandomString(i);
+    }
+
+    public String generateUserName(){
+        int i = 5;
+        return "student_"+getRandomString(i);
     }
 }

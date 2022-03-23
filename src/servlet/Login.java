@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.RegistorUserList;
 import model.User;
-import model.register.RegisterUserLogic;
+import model.registor.RegisterUserLogic;
+import model.registor.RegistorUserList;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {

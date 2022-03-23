@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.generator.GenerateString" %>
-<%@ page import="model.generator.GeneratePassword" %>
-<%@page import="model.RegistorUserList"%>
+<%@ page import="model.generator.Generator" %>
+<%@page import="model.registor.RegistorUserList"%>
 <%@page import="java.util.*" %>
 <%@page import="model.User"%>
 <%
@@ -21,13 +20,13 @@ RegistorUserList rul = (RegistorUserList) application.getAttribute("rul");
 	<h1>どこつぶへようこそ</h1>
 </div>
 <%
-GenerateString generateString = new GenerateString();
-String gname = generateString.generate();
-GeneratePassword generatePassword = new GeneratePassword();
-String gpass = generatePassword.generate();
+Generator generateString = new Generator();
+String gname = generateString.generateUserName();
+Generator generatePassword = new Generator();
+String gpass = generatePassword.generatePassword();
 %>
 
-初回起動時は新規登録しか表示されない。
+<p>初回起動時は新規登録しか表示されない。</p>
 <form action="RegisterUser" method="get">
 	<button type='submit' name='action'>新規登録</button>
 </form>
@@ -46,7 +45,7 @@ if(rul!=null){
 	List<User> rList = rul.getRegistorUserList();
 	for(User rUser:rList){
 %>
-user:<%= rUser.getName() %> pass:<%= rUser.getPass() %><br>
+user:<%= rUser %><br>
 <%
 	}
 }
