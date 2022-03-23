@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.generator.Generator" %>
-<%@page import="model.register.RegistorUserList"%>
+<%@page import="model.registor.RegistorUserList"%>
 <%@page import="java.util.*" %>
 <%
 RegistorUserList rul = (RegistorUserList) application.getAttribute("rul");
@@ -37,7 +37,7 @@ pass:<%= gpass %></p>
 登録ユーザー一覧<br>
 <%
 if(rul!=null){
-	List<User> rList = rul.getRul();
+	List<User> rList = rul.getRegistorUserList();
 	for(User rUser:rList){
 %>
 <%= rUser %><br>

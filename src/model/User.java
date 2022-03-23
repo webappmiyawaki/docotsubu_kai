@@ -23,12 +23,12 @@ public class User implements Serializable {
 		if(o==null)return false;
 		if(!(o instanceof User))return false;
 		User user = (User)o;
-		if(this.name.equals(user.getName())) {
-			return false;
+		if(this.name.toLowerCase().equals(user.getName().toLowerCase())) {
+			return true;
 		}
-		if(this.pass.equals(user.getPass())) {
-			return false;
+		if(this.pass.toLowerCase().equals(user.getPass().toLowerCase())) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 }

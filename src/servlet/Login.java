@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
-import model.register.RegisterUserLogic;
-import model.register.RegistorUserList;
+import model.registor.RegisterUserLogic;
+import model.registor.RegistorUserList;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
 	    if(registorUserList==null) {
 	    	registorUserList = new RegistorUserList();
 	    }else {
-	    	userList = registorUserList.getRul();
+	    	userList = registorUserList.getRegistorUserList();
 	    }
 
 	    RegisterUserLogic registerUserLogic = new RegisterUserLogic();
