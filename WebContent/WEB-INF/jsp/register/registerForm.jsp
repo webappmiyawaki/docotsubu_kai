@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="model.generator.GenerateString" %>
-<%@ page import="model.generator.GeneratePassword" %>
-<%@page import="model.RegistorUserList"%>
+<%@ page import="model.generator.Generator" %>
+<%@page import="model.register.RegistorUserList"%>
 <%@page import="java.util.*" %>
 <%
 RegistorUserList rul = (RegistorUserList) application.getAttribute("rul");
@@ -17,10 +16,10 @@ RegistorUserList rul = (RegistorUserList) application.getAttribute("rul");
 <body>
 
 <%
-GenerateString generateString = new GenerateString();
-String gname = generateString.generate();
-GeneratePassword generatePassword = new GeneratePassword();
-String gpass = generatePassword.generate();
+Generator generateString = new Generator();
+String gname = generateString.generateUserName();
+Generator generatePassword = new Generator();
+String gpass = generatePassword.generatePassword();
 %>
 
 <p>入力が面倒くさいので自動で初期値出力</p>
@@ -38,10 +37,10 @@ pass:<%= gpass %></p>
 登録ユーザー一覧<br>
 <%
 if(rul!=null){
-	List<User> rList = rul.getRegistorUserList();
+	List<User> rList = rul.getRul();
 	for(User rUser:rList){
 %>
-user:<%= rUser.getName() %> pass:<%= rUser.getPass() %><br>
+<%= rUser %><br>
 <%
 	}
 }

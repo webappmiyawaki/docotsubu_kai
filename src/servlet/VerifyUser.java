@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.RegistorUserList;
 import model.User;
 import model.register.RegisterUserLogic;
+import model.register.RegistorUserList;
 
 @WebServlet("/VerifyUser")
 public class VerifyUser extends HttpServlet {
@@ -28,18 +28,22 @@ public class VerifyUser extends HttpServlet {
 
 	    ServletContext application = this.getServletContext();
 	    RegistorUserList registorUserList = (RegistorUserList) application.getAttribute("rul");
+
 	    List<User> userList = new ArrayList<>();
+
+	    //初回はスルー
 	    if(registorUserList==null) {
 	    	registorUserList = new RegistorUserList();
 	    }else {
-	    	userList = registorUserList.getRegistorUserList();
+	    	userList = registorUserList.getRul();
 	    }
-		RegisterUserLogic registerUserLogic = new RegisterUserLogic();
+
+	    RegisterUserLogic registerUserLogic = new RegisterUserLogic();
 		boolean isRegister = registerUserLogic.execute(userList,user);
 
 		if(isRegister) {
-			registorUserList.setRegistorUserList(user);
-
+			userList.add(user);
+			registorUserList.setRul(userList);
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register/registerForm.jsp");
 			dispatcher.forward(request, response);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
-import model.generator.GenerateString;
+import model.generator.Generator;
 
 @WebServlet("/RegisterUser")
 public class RegisterUser extends HttpServlet {
@@ -40,7 +40,7 @@ public class RegisterUser extends HttpServlet {
     String name = request.getParameter("name");
     String pass = request.getParameter("pass");
 
-	GenerateString gs = new GenerateString();
+	Generator gs = new Generator();
 	if(name.equals("")) {
 		name="student_"+gs.getRandomString(4);
 	}
