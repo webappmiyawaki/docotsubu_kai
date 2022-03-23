@@ -1,4 +1,4 @@
-package model.register;
+package model.registor;
 
 import java.util.List;
 
